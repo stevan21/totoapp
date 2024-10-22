@@ -1,0 +1,33 @@
+ {% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>TOTO APP</title>
+    <link rel="stylesheet" href="{% static "styles.css" %}">
+</head>
+<body>
+    <h1>bienvenu sur mon app TOTO</h1>
+    <a href="{% url 'record_create' %}">Ajouter un Enregistrement</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in records %}
+                <tr>
+                    <td>{{ record.title }}</td>
+                    <td>{{ record.description }}</td>
+                    <td>
+                        <a href="{% url 'record_update' record.pk %}">Modifier</a>
+                        <a href="{% url 'record_delet' record.pk %}">Supprimer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>

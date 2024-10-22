@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% if form.instance.pk %}Modifier{% else %}Ajouter{% endif %} Enregistrement</title>
+    <link rel="stylesheet" href="{% static "styles.css" %}">
+</head>
+<body>
+    <h1>{% if form.instance.pk %}Modifier{% else %}Ajouter{% endif %} Enregistrement</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Enregistrer</button>
+    </form>
+    <a href="{% url 'record_list' %}">Retour à la liste</a>
+</body>
+</html>
